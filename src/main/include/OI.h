@@ -7,7 +7,15 @@
 
 #pragma once
 
+#include <Joystick.h>
+
 class OI {
- public:
+public:
   OI();
+
+  double GetLeftY();
+  double GetRightY();
+private:
+  frc::Joystick m_left { 0 };
+  frc::Joystick m_right { 1 };
 };

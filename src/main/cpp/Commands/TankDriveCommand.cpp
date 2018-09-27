@@ -5,27 +5,38 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "Commands/MyAutoCommand.h"
+#include "Commands/TankDriveCommand.h"
 
 #include "Robot.h"
 
-MyAutoCommand::MyAutoCommand() {
+TankDriveCommand::TankDriveCommand() {
   // Use Requires() here to declare subsystem dependencies
-  Requires(&Robot::m_subsystem);
+  Requires(&Robot::m_drivetrain);
 }
 
 // Called just before this Command runs the first time
-void MyAutoCommand::Initialize() {}
+void TankDriveCommand::Initialize() {
+  // Place any code to clear out state, to setup command, set timeouts...
+}
 
 // Called repeatedly when this Command is scheduled to run
-void MyAutoCommand::Execute() {}
+void TankDriveCommand::Execute() {
+  Robot::m_drivetrain.TankDrive(Robot::m_oi.GetLeftY(), Robot::m_oi.GetRightY());
+}
 
 // Make this return true when this Command no longer needs to run execute()
-bool MyAutoCommand::IsFinished() { return false; }
+bool TankDriveCommand::IsFinished() { 
+  return false; 
+}
 
 // Called once after isFinished returns true
-void MyAutoCommand::End() {}
+void TankDriveCommand::End() {
+  // Clean up anything that the command did to the subsystem so the next command
+  // can execute successfully.
+}
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void MyAutoCommand::Interrupted() {}
+void TankDriveCommand::Interrupted() {
+
+}

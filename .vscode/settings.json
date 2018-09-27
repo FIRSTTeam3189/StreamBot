@@ -12,5 +12,10 @@
     ".project": true
   },
   "C_Cpp.default.configurationProvider": "vscode-wpilib",
-  "wpilib.online": true
+  "wpilib.online": true,
+  "C_Cpp.configurationWarnings": "Disabled",
+  "files.associations": {
+    "xiosbase": "cpp",
+    "xlocale": "cpp"
+  }
 }

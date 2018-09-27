@@ -7,14 +7,9 @@
 
 #pragma once
 
-#include <Commands/Command.h>
+#include <Commands/CommandGroup.h>
 
-class MyAutoCommand : public frc::Command {
+class SimpleAuto : public frc::CommandGroup {
  public:
-  MyAutoCommand();
-  void Initialize() override;
-  void Execute() override;
-  bool IsFinished() override;
-  void End() override;
-  void Interrupted() override;
+  SimpleAuto();
 };

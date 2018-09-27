@@ -7,14 +7,21 @@
 
 #pragma once
 
-#include <Commands/Command.h>
+#include <Commands/Subsystem.h>
+#include <memory>
+#include "Common.h"
 
-class ExampleCommand : public frc::Command {
+class Drivetrain : public frc::Subsystem {
  public:
-  ExampleCommand();
-  void Initialize() override;
-  void Execute() override;
-  bool IsFinished() override;
-  void End() override;
-  void Interrupted() override;
+  Drivetrain();
+  void InitDefaultCommand() override;
+  void InitHardware();
+
+  void TankDrive(double left, double right);
+
+ private:
+  // It's desirable that everything possible under private except
+  // for methods that implement subsystem capabilities
+  std::unique_ptr<Common::TalonSRX> m_left;
+  std::unique_ptr<Common::TalonSRX> m_right;
 };

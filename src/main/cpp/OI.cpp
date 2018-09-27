@@ -12,3 +12,11 @@
 OI::OI() {
   // Process operator interface input here.
 }
+
+double OI::GetLeftY() {
+  return m_left.GetY(frc::GenericHID::JoystickHand::kLeftHand);
+}
+
+double OI::GetRightY() {
+  return m_left.GetY(frc::GenericHID::JoystickHand::kRightHand);
+}

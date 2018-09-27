@@ -5,27 +5,30 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "Commands/ExampleCommand.h"
+#include "Commands/DriveForwardTime.h"
 
 #include "Robot.h"
 
-ExampleCommand::ExampleCommand() {
+DriveForwardTime::DriveForwardTime(double time) {
   // Use Requires() here to declare subsystem dependencies
-  Requires(&Robot::m_subsystem);
+  Requires(&Robot::m_drivetrain);
+  SetTimeout(time);
 }
 
 // Called just before this Command runs the first time
-void ExampleCommand::Initialize() {}
+void DriveForwardTime::Initialize() {}
 
 // Called repeatedly when this Command is scheduled to run
-void ExampleCommand::Execute() {}
+void DriveForwardTime::Execute() {
+  Robot::m_drivetrain.TankDrive(.5, .5);
+}
 
 // Make this return true when this Command no longer needs to run execute()
-bool ExampleCommand::IsFinished() { return false; }
+bool DriveForwardTime::IsFinished() { return IsTimedOut(); }
 
 // Called once after isFinished returns true
-void ExampleCommand::End() {}
+void DriveForwardTime::End() {}
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void ExampleCommand::Interrupted() {}
+void DriveForwardTime::Interrupted() {}
