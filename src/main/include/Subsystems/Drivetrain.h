@@ -22,6 +22,8 @@ class Drivetrain : public frc::Subsystem {
  private:
   // It's desirable that everything possible under private except
   // for methods that implement subsystem capabilities
-  std::unique_ptr<Common::TalonSRX> m_left;
-  std::unique_ptr<Common::TalonSRX> m_right;
+  std::unique_ptr<Common::TalonSRX> front_left;
+  std::unique_ptr<Common::TalonSRX> front_right;
+  std::unique_ptr<Common::TalonSRX> back_left;
+  std::unique_ptr<Common::TalonSRX> back_right;
 };

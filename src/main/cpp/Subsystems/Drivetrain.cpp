@@ -19,13 +19,19 @@ void Drivetrain::InitDefaultCommand() {
 }
 
 void Drivetrain::InitHardware() {
-  m_left = std::make_unique<Common::TalonSRX>(0);
-  m_right = std::make_unique<Common::TalonSRX>(1);
+
+  front_left = std::make_unique<Common::TalonSRX>(2);
+  front_right = std::make_unique<Common::TalonSRX>(5);
+  back_left = std::make_unique<Common::TalonSRX>(1);
+  back_right = std::make_unique<Common::TalonSRX>(6);
+
+  back_left->Follow(*front_left);
+  back_right->Follow(*front_right);
 }
 
 void Drivetrain::TankDrive(double left, double right) {
-  m_left->Set(Common::ControlMode::PercentOutput, left);
-  m_right->Set(Common::ControlMode::PercentOutput, right);
+  front_left->Set(Common::ControlMode::PercentOutput, left);
+  front_right->Set(Common::ControlMode::PercentOutput, right);
 }
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
