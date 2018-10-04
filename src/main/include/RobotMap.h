@@ -14,12 +14,26 @@
  * floating around.
  */
 
-// For example to map the left and right motors, you could define the
-// following variables to use with your drivetrain subsystem.
-// constexpr int kLeftMotor = 1;
-// constexpr int kRightMotor = 2;
+namespace RobotMap {
+    namespace Drivetrain {
+        // Constants for Drivetrain subsystem
+        // This includes:
+        //      CAN ID's for the drive motors.
+        constexpr int front_left_id = 2;
+        constexpr int front_right_id = 5;
+        constexpr int back_left_id = 1;
+        constexpr int back_right_id = 6;
+    }
 
-// If you are using multiple modules, make sure to define both the port
-// number and the module. For example you with a rangefinder:
-// constexpr int kRangeFinderPort = 1;
-// constexpr int kRangeFinderModule = 1;
+    namespace Gearbox {
+        // Constants for Gearbox subsystem
+        // This includes:
+        //      Pneumatics controller CAN ID
+        //      Pneumatics ID for extend and retract solenoids for gearbox piston
+        //      Wether the piston should be extended by default (in first gear).
+        constexpr int pneumatics_controller_id = 0;
+        constexpr int extend_solenoid_id = 0;
+        constexpr int retract_solenoid_id = 1;
+        constexpr bool is_first_gear_by_default = true;
+    }
+};

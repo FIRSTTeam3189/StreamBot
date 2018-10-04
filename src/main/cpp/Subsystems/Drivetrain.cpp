@@ -19,17 +19,18 @@ void Drivetrain::InitDefaultCommand() {
 }
 
 void Drivetrain::InitHardware() {
-
-  front_left = std::make_unique<Common::TalonSRX>(2);
-  front_right = std::make_unique<Common::TalonSRX>(5);
-  back_left = std::make_unique<Common::TalonSRX>(1);
-  back_right = std::make_unique<Common::TalonSRX>(6);
+  // Initialize the motors for the drivetrain.
+  front_left = std::make_unique<Common::TalonSRX>(RobotMap::Drivetrain::front_left_id);
+  front_right = std::make_unique<Common::TalonSRX>(RobotMap::Drivetrain::front_right_id);
+  back_left = std::make_unique<Common::TalonSRX>(RobotMap::Drivetrain::back_left_id);
+  back_right = std::make_unique<Common::TalonSRX>(RobotMap::Drivetrain::back_right_id);
 
   back_left->Follow(*front_left);
   back_right->Follow(*front_right);
 }
 
 void Drivetrain::TankDrive(double left, double right) {
+  // Use PercentOutput for controlling TalonSRX motor controllers.
   front_left->Set(Common::ControlMode::PercentOutput, left);
   front_right->Set(Common::ControlMode::PercentOutput, right);
 }

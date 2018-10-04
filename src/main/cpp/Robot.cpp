@@ -12,12 +12,14 @@
 
 Drivetrain Robot::m_drivetrain;
 OI Robot::m_oi;
+Gearbox Robot::m_gearbox;
 
 void Robot::RobotInit() {
   m_chooser.AddDefault("Default Auto", &m_defaultAuto);
   m_chooser.AddObject("My Auto", &m_myAuto);
   frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
   m_drivetrain.InitHardware();
+  m_gearbox.InitHardware();
 }
 
 /**

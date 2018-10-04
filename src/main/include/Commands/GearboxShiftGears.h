@@ -7,21 +7,14 @@
 
 #pragma once
 
-#include <Buttons/JoystickButton.h>
-#include <Joystick.h>
-#include <memory>
+#include <Commands/Command.h>
 
-class OI {
-public:
-  OI();
-
-  double GetLeftY();
-  double GetRightY();
-private:
-  frc::Joystick m_left { 0 };
-  frc::Joystick m_right { 1 };
-  
-  std::unique_ptr<frc::JoystickButton> right_1;
-  std::unique_ptr<frc::JoystickButton> right_2;
-  std::unique_ptr<frc::JoystickButton> right_3;
+class GearboxShiftGears : public frc::Command {
+ public:
+  GearboxShiftGears();
+  void Initialize() override;
+  void Execute() override;
+  bool IsFinished() override;
+  void End() override;
+  void Interrupted() override;
 };

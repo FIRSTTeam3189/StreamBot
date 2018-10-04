@@ -14,9 +14,19 @@
 class Drivetrain : public frc::Subsystem {
  public:
   Drivetrain();
+  ~Drivetrain() = default;
   void InitDefaultCommand() override;
+
+  /**
+   * Initializes the TalonSRX CAN controllers because we can't initialize them
+   * in the constructor without crashing the robot.
+   */
   void InitHardware();
 
+  /**
+   * Powers left and right sides of the robot with the power values ranging from
+   * -1.0 to 1.0.
+   */
   void TankDrive(double left, double right);
 
  private:

@@ -15,10 +15,12 @@
 #include "Commands/DriveForwardTime.h"
 #include "OI.h"
 #include "Subsystems/Drivetrain.h"
+#include "Subsystems/Gearbox.h"
 
 class Robot : public frc::TimedRobot {
  public:
   static Drivetrain m_drivetrain;
+  static Gearbox m_gearbox;
   static OI m_oi;
 
   void RobotInit() override;
