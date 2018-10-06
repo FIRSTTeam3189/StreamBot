@@ -12,7 +12,8 @@
 #include <TimedRobot.h>
 
 #include "Commands/TankDriveCommand.h"
-#include "Commands/DriveForwardTime.h"
+#include "Commands/AutoDriveTime.h"
+#include "Commands/SimpleAuto.h"
 #include "OI.h"
 #include "Subsystems/Drivetrain.h"
 #include "Subsystems/Gearbox.h"
@@ -38,6 +39,6 @@ class Robot : public frc::TimedRobot {
   // doesn't have undefined behavior and potentially crash.
   frc::Command* m_autonomousCommand = nullptr;
   TankDriveCommand m_defaultAuto;
-  DriveForwardTime m_myAuto { 1.0 };
+  SimpleAuto m_myAuto;
   frc::SendableChooser<frc::Command*> m_chooser;
 };

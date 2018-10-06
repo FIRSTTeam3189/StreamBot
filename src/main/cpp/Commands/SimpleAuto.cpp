@@ -6,27 +6,16 @@
 /*----------------------------------------------------------------------------*/
 
 #include "Commands/SimpleAuto.h"
-#include "Commands/DriveForwardTime.h"
+#include "Commands/AutoDriveTime.h"
+#include "Commands/GearboxSetGear.h"
+#include <Commands/TimedCommand.h>
 
+constexpr int NUMBER_OF_LEGS = 4;
 SimpleAuto::SimpleAuto() {
-  AddSequential(new DriveForwardTime(1.5));
-  AddSequential(new DriveForwardTime(2.0));
-
-  // It will drive forward for only 3.5 seconds instead of expected 8.5 seconds
-  // Add Commands here:
-  // e.g. AddSequential(new Command1());
-  //      AddSequential(new Command2());
-  // these will run in order.
-
-  // To run multiple commands at the same time,
-  // use AddParallel()
-  // e.g. AddParallel(new Command1());
-  //      AddSequential(new Command2());
-  // Command1 and Command2 will run in parallel.
-
-  // A command group will require all of the subsystems that each member
-  // would require.
-  // e.g. if Command1 requires chassis, and Command2 requires arm,
-  // a CommandGroup containing them would require both the chassis and the
-  // arm.
+  for (int i = 0; i < NUMBER_OF_LEGS; ++i) {
+    // Add one leg of the box
+    AddSequential(new GearboxSetGear(true));
+    AddSequential(new AutoDriveTime(DriveDirection::Forward, 3.0, 0.5));
+    AddSequential(new AutoDriveTime(DriveDirection::RotateRight, .75, 0.5));
+  }
 }

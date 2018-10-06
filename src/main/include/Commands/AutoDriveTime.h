@@ -9,12 +9,23 @@
 
 #include <Commands/Command.h>
 
-class DriveForwardTime : public frc::Command {
+enum class DriveDirection {
+  Forward,
+  Backward,
+  RotateLeft,
+  RotateRight
+};
+
+class AutoDriveTime : public frc::Command {
  public:
-  DriveForwardTime(double time);
+  AutoDriveTime(DriveDirection direction, double time, double power);
   void Initialize() override;
   void Execute() override;
   bool IsFinished() override;
   void End() override;
   void Interrupted() override;
+
+private:
+  DriveDirection move_direction;
+  double drive_power;
 };
